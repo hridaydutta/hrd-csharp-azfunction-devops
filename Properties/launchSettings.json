@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "hrd_csharp_azfunction_devops_git": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7134",
+      "launchBrowser": false
+    }
+  }
+}
