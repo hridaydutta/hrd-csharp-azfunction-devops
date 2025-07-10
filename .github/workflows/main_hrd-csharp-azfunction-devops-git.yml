@@ -83,12 +83,23 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+
+      
+
       - name: 'Publish Azure Function App'
         shell: bash
-        run: |
-          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          dotnet publish -c Release --output ${{ github.workspace }}/drop
-          popd
+        run: dotnet publish -c Release --property PublishDir=${{ github.workspace }}/drop
+        # run: |
+        #   pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        #   dotnet publish -c Release --output ${{ github.workspace }}/drop
+        #   popd
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          include-hidden-files: true
+          path: ${{env.AZURE_FUNCTIONAPP_PACKAGE_PATH}}
 
       - name: 'Login to Azure'
         uses: azure/login@v2
