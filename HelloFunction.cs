@@ -17,7 +17,7 @@ namespace hrd_csharp_azfunction_devops_git
         [Function("HelloFunction")]
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
-            _logger.LogInformation("C# HTTP trigger function processed a request. 07/07/2025 17:34");
+            _logger.LogInformation("C# HTTP trigger function processed a request. 10/07/2025 17:34");
             return new OkObjectResult("Welcome to Azure Functions!");
         }
     }
